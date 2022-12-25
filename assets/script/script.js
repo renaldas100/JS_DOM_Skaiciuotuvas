@@ -39,16 +39,18 @@ if (count == a && a != 0) {
     console.log(`Pirmo skaiciai teisingi`);
     error1.innerHTML ='';
     check1 = 1;
-    // return check2
+    return check1;
 } 
 if (count != a) {
     // console.log(`Rašykite tik skaičius`);
     error1.innerHTML ='*Rašykite tik skaičius';
     check1 = 0;
+    return check1;
 }
 if (a == 0) {
     error1.innerHTML ='';
     check1 = 0;
+    return check1;
 }console.log(check1, check2);
 }
 
@@ -78,16 +80,18 @@ function numberCheck2(){
         console.log(`Antro skaiciai teisingi`);
         error3.innerHTML ='';
         check2 = 1;
-        // return check2
+        return check2;
     } 
     if (count != a) {
         // console.log(`Rašykite tik skaičius`);
         error3.innerHTML ='*Rašykite tik skaičius';
         check2 = 0;
+        return check2;
     }
     if (a == 0) {
         error3.innerHTML ='';
         check2 = 0;
+        return check2;
     }console.log(check1, check2);
 }
     
@@ -109,20 +113,21 @@ const mainForm = document.forms.main;
 const sarasas = mainForm.nameSelect;
 // console.log(sarasas.options);
 
-
+function veiksmas(){
 // gaunam indeksa parinkto option
-const indeksas = sarasas.selectedIndex
-console.log(indeksas);
-
-
-
+const index = sarasas.selectedIndex
+console.log(index);
+selectedIndex = index;
+// return selectedIndex;
 
 // gaunam Value parinkto option
-let verte = sarasas.value;
-console.log(verte);
+let verte1 = sarasas.value;
+console.log(verte1);
+selectedVerte = verte1;
 
-function veiksmas(){
+return selectedIndex, selectedVerte;
 }
+console.log(veiksmas());
 
 mainForm.addEventListener('click', veiksmas);
 
@@ -137,7 +142,8 @@ function calc(){
     // let b = verte;
     // let c = +secondNumber.value;
     // console.log(a);
-
+let indeksas = selectedIndex;
+let verte = selectedVerte;
 if(indeksas == 1){
     a = +firstNumber.value * +secondNumber.value;
     // console.log(`${+firstNumber.value} ${verte} ${+secondNumber.value} = ${a}`);
@@ -154,12 +160,19 @@ if(indeksas == 2){
     // console.log(+secondNumber.value);
     // console.log('5599');
 }
+if(indeksas == 3){
+    a = +firstNumber.value + +secondNumber.value;
+}
+if(indeksas == 4){
+    a = +firstNumber.value - +secondNumber.value;
+}
+
     const results = document.querySelector('.results');
     const newElement = document.createElement('div');
     newElement.innerHTML = `${+firstNumber.value} ${verte} ${+secondNumber.value} = ${a}`;
     results.prepend(newElement);
 
-
+    console.log(veiksmas());
 }
 // console.log(calc())
 
